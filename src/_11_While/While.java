@@ -103,15 +103,15 @@ public class While {
         // 이것을 while문
         int waiting = 1;
         int count = 20;
+        int noShow = 14;
         while (count > 0) {
-            if (waiting == 14) {
-                System.out.println("노쇼 발생!");
-                count++;
+            if (waiting == noShow) {
+                System.out.println(noShow + "번 노쇼 발생!");
             } else {
                 System.out.println(waiting + "번 손님 입장");
+                count--;
             }
             waiting++;
-            count--;
         }
         System.out.println("솔드 아웃");
         System.out.println("가게 문 닫음");
