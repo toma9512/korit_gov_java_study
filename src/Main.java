@@ -7,6 +7,9 @@ public class Main {
 
         arr1 = Arrays.copyOf(arr,2);
         System.out.println(Arrays.toString(arr1));
+        char ch = 'a';
+
+        System.out.println((char) (ch + '1' - 'a'));
     }
 }
 
