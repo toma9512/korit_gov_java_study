@@ -13,5 +13,14 @@ public class Main {
         Triangle triangle = new Triangle(2.5, 4);
         System.out.println(triangle.area());
         triangle.render();
+
+        double sum = 0;
+        Shape[] arr = {circle, rectangle, triangle};
+
+        for (Shape shape : arr) {
+            sum += shape.area();
+        }
+
+        System.out.println(sum);
     }
 }
