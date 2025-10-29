@@ -12,5 +12,7 @@ public class Main {
         System.out.println(person1.student == person2.student);
         System.out.println(person1.student.hashCode());
         System.out.println(person2.student.hashCode());
+
+        System.out.println(person1.NUM == person2.NUM);
     }
 }

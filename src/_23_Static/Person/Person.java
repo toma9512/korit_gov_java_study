@@ -5,6 +5,7 @@ public class Person {
     final String COUNTRY1 = new String("korea"); // 객체 수준에서의 상수(객체 수준에서 변경 할 수 없음)
     static final String COUNTRY2 = "US"; // 클래스 전체에서 하나뿐인 상수
     final Student student = new Student();
+    final Integer NUM = 10;
 
     public Person() {
         population++;
