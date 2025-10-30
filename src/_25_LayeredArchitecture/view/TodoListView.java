@@ -7,6 +7,7 @@ import _25_LayeredArchitecture.entity.Todo;
 import _25_LayeredArchitecture.entity.User;
 import _25_LayeredArchitecture.service.TodoService;
 import _25_LayeredArchitecture.service.UserService;
+import org.ietf.jgss.GSSName;
 
 import java.util.Scanner;
 
@@ -108,33 +109,37 @@ public class TodoListView {
     }
 
     public void todoListMenuView() {
+        String cmd = null;
         while (true) {
             System.out.println("[ TodoList Menu ]");
             System.out.println("1. Todo 등록");
             System.out.println("2. Todo 조회");
-            System.out.println("b. 뒤로가기");
-            System.out.print(">>> ");
-            String cmd = scanner.nextLine();
+            System.out.println("b. 뒤로 가기");
+            System.out.print(">> ");
+            cmd = scanner.nextLine();
 
             if ("b".equals(cmd)) {
                 break;
             } else if ("1".equals(cmd)) {
                 System.out.println("[ Todo 등록 ]");
-                String content = null;
+                String contents = null;
                 while (true) {
-                    System.out.print("content >> ");
-                    content = scanner.nextLine();
-                    if (content == null || content.isBlank()) {
-                        System.out.println("content가 비어있습니다.");
+                    System.out.println("내용 입력");
+                    System.out.print(">> ");
+                    contents = scanner.nextLine();
+                    if (contents == null || contents.isBlank()) {
+                        System.out.println("잘못된 입력");
                         continue;
                     }
                     break;
                 }
-                TodoRegisterReqDto todoRegisterReqDto = new TodoRegisterReqDto(content,principal);
-                todoService.saveTodo(todoRegisterReqDto);
+                TodoRegisterReqDto todoRegisterReqDto = new TodoRegisterReqDto(contents, principal);
+                todoService.todoRegister(todoRegisterReqDto);
             } else if ("2".equals(cmd)) {
                 System.out.println("[ Todo 조회 ]");
-                todoService.printTodoListByUsername(principal);
+                todoService.printTodoListByUser(principal);
+            } else {
+                System.out.println("잘못된 입력");
             }
         }
     }

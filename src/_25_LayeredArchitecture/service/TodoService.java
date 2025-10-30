@@ -8,24 +8,24 @@ import _25_LayeredArchitecture.repository.TodoList;
 import java.time.LocalDateTime;
 
 public class TodoService {
-    private TodoList todoList;
-    private User principal;
+    TodoList todoList;
 
     public TodoService(TodoList todoList) {
         this.todoList = todoList;
     }
 
-    public void saveTodo(TodoRegisterReqDto todoRegisterReqDto) {
+    public void todoRegister(TodoRegisterReqDto todoRegisterReqDto) {
         Todo todo = todoRegisterReqDto.toEntity();
         todo.setTodoId(todoList.generateTodoId());
         todo.setCreateDt(LocalDateTime.now());
         todoList.add(todo);
     }
 
-    public void printTodoListByUsername(User principal) {
-        for (Todo todo : todoList.getAllTodo()) {
+    public void printTodoListByUser(User principal) {
+        Todo[] todos = todoList.getAllTodos();
+        for (Todo todo : todos) {
             if (todo.getUser().getUsername().equals(principal.getUsername())) {
-                System.out.println(todo);
+                System.out.println(todo.getContents());
             }
         }
     }

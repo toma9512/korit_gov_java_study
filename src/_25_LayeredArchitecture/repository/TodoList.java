@@ -1,17 +1,12 @@
 package _25_LayeredArchitecture.repository;
 
 import _25_LayeredArchitecture.entity.Todo;
-import _25_LayeredArchitecture.entity.User;
 
 public class TodoList {
-    private Todo[] todos;
+    Todo[] todos;
 
     public TodoList() {
-        this.todos = new Todo[0];
-    }
-
-    public Todo[] getAllTodo() {
-        return todos;
+        todos = new Todo[0];
     }
 
     public int generateTodoId() {
@@ -25,5 +20,9 @@ public class TodoList {
         }
         temp[temp.length-1] = todo;
         todos = temp;
+    }
+
+    public Todo[] getAllTodos() {
+        return todos;
     }
 }
