@@ -26,7 +26,7 @@ public class TodoListView {
     public void homeView() {
         while (true) {
             System.out.println("[ Todo List ]");
-            System.out.println("1. TodoList");
+            System.out.println("1. TodoList 관리");
             if (principal == null) {
                 System.out.println("2. 회원가입");
                 System.out.println("3. 로그인");
@@ -42,7 +42,6 @@ public class TodoListView {
                 break;
             } else if ("1".equals(cmd) && principal == null) {
                 System.out.println("로그인 후 사용 가능합니다.");
-                continue;
             } else if ("1".equals(cmd) && principal != null) {
                 // TodoList 관리
                 todoListMenuView();
@@ -125,7 +124,7 @@ public class TodoListView {
                 String contents = null;
                 while (true) {
                     System.out.println("내용 입력");
-                    System.out.print(">> ");
+                    System.out.print("오늘 할 일 >> ");
                     contents = scanner.nextLine();
                     if (contents == null || contents.isBlank()) {
                         System.out.println("잘못된 입력");
@@ -134,10 +133,11 @@ public class TodoListView {
                     break;
                 }
                 TodoRegisterReqDto todoRegisterReqDto = new TodoRegisterReqDto(contents, principal);
-                todoService.todoRegister(todoRegisterReqDto);
+                todoService.register(todoRegisterReqDto);
+                System.out.println("=== 등록 완료 ===");
             } else if ("2".equals(cmd)) {
                 System.out.println("[ Todo 조회 ]");
-                todoService.printTodoListByUser(principal);
+                todoService.printAllTodoByUser(principal);
             } else {
                 System.out.println("잘못된 입력");
             }

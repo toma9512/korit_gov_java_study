@@ -1,6 +1,7 @@
 package _25_LayeredArchitecture.repository;
 
 import _25_LayeredArchitecture.entity.Todo;
+import _25_LayeredArchitecture.entity.User;
 
 public class TodoList {
     Todo[] todos;
@@ -22,7 +23,19 @@ public class TodoList {
         todos = temp;
     }
 
-    public Todo[] getAllTodos() {
-        return todos;
+    public Todo[] findAllByUserId(int userId) {
+        int foundTodoCount = 0;
+        for (Todo todo : todos) {
+            if (todo.getUser().getUserId() == userId) {
+                foundTodoCount++;
+            }
+        }
+        Todo[] foundTodos = new Todo[foundTodoCount];
+        for (int i=0, j=0; i<todos.length; i++) {
+            if (todos[i].getUser().getUserId() == userId) {
+                foundTodos[j++] = todos[i];
+            }
+        }
+        return foundTodos;
     }
 }
